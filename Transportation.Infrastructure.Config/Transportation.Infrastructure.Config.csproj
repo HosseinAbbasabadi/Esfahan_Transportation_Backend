@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Autofac" Version="7.1.0" />
+      <PackageReference Include="PhoenixFramework.Autofac" Version="1.2.8" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Transportation.Application\Transportation.Application.csproj" />
+      <ProjectReference Include="..\Transportation.Infrastructure.Query\Transportation.Infrastructure.Query.csproj" />
+      <ProjectReference Include="..\Transportation.Presentation.Facade.Command\Transportation.Presentation.Facade.Command.csproj" />
+      <ProjectReference Include="..\Transportation.Presentation.Facade.Query\Transportation.Presentation.Facade.Query.csproj" />
+    </ItemGroup>
+
+</Project>

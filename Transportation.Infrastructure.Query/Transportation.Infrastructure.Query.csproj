@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Autofac" Version="7.1.0" />
+      <PackageReference Include="PhoenixFramework.Application" Version="1.2.5" />
+      <PackageReference Include="PhoenixFramework.Autofac" Version="1.2.8" />
+      <PackageReference Include="PhoenixFramework.Company" Version="1.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Transportation.Infrastructure.Efcore\Transportation.Infrastructure.Efcore.csproj" />
+    </ItemGroup>
+
+</Project>
