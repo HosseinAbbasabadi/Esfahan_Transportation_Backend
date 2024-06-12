@@ -5,6 +5,7 @@ using PhoenixFramework.Application.Command;
 using PhoenixFramework.Application.Query;
 using PhoenixFramework.Autofac;
 using PhoenixFramework.Domain;
+using Transport.Domain.VehicleTypeAgg.Service;
 using Transportation.Application.VehicleType;
 using Transportation.Infrastructure.Efcore;
 using Transportation.Infrastructure.Efcore.Repository;
@@ -85,11 +86,11 @@ public class TransportationModule : Module
             .AsClosedTypesOf(typeof(IRepository<,>))
             .InstancePerLifetimeScope();
 
-        //var domainServiceAssembly = typeof(VechicleTypeService).Assembly;
-        //builder.RegisterAssemblyTypes(domainServiceAssembly)
-        //    .Where(t => t.Name.EndsWith("Service"))
-        //    .AsImplementedInterfaces()
-        //    .InstancePerLifetimeScope();
+        var domainServiceAssembly = typeof(VehicleTypeService).Assembly;
+        builder.RegisterAssemblyTypes(domainServiceAssembly)
+            .Where(t => t.Name.EndsWith("Service"))
+            .AsImplementedInterfaces()
+            .InstancePerLifetimeScope();
 
         var facadeAssembly = typeof(VehicleTypeCommandFacade).Assembly;
         builder.RegisterAssemblyTypes(facadeAssembly)
