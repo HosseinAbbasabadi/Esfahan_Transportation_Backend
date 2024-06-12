@@ -9,11 +9,13 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.9"/>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
+        <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
     </ItemGroup>
 
 
     <ItemGroup>
       <ProjectReference Include="..\Transportation.Application\Transportation.Application.csproj" />
+      <ProjectReference Include="..\Transportation.Infrastructure.Config\Transportation.Infrastructure.Config.csproj" />
       <ProjectReference Include="..\Transportation.Presentation.Facade.Command\Transportation.Presentation.Facade.Command.csproj" />
       <ProjectReference Include="..\Transportation.Presentation.Facade.Query\Transportation.Presentation.Facade.Query.csproj" />
     </ItemGroup>

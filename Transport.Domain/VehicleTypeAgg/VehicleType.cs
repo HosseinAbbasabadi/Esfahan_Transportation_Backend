@@ -1,3 +1,4 @@
+using PhoenixFramework.Core.Exceptions;
 using PhoenixFramework.Domain;
 
 namespace Transport.Domain.VehicleTypeAgg;
@@ -18,6 +19,9 @@ public class VehicleType : AuditableAggregateRootBase<long>
         Title = title;
         Description = description;
 
+        if (Title == title)
+            throw new BusinessException("01", "title is duplicated");
+        
         Modified(editor);
         
         // Remove(editor);

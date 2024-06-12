@@ -12,6 +12,7 @@ public class VehicleTypeController : ControllerBase
 {
     private readonly IVehicleTypeCommandFacade _commandFacade;
     private readonly IVehicleTypeQueryFacade _queryFacade;
+    // private readonly IResponsiveCommandBusAsync _responsiveCommandBusAsync;
 
     public VehicleTypeController(IVehicleTypeCommandFacade commandFacade, IVehicleTypeQueryFacade queryFacade)
     {
@@ -20,8 +21,11 @@ public class VehicleTypeController : ControllerBase
     }
 
     [HttpPost("Create")]
-    public IActionResult Create([FromBody] CreateVehicleType command) =>
-        new JsonResult(_commandFacade.Create(command));
+    public async Task<IActionResult> Create([FromBody] CreateVehicleType command)
+    {
+        return new JsonResult(await _commandFacade.Create(command));
+        // return new JsonResult(await _responsiveCommandBusAsync.Dispatch<CreateVehicleType, Guid>(command));
+    }
 
     [HttpPost("Edit")]
     public void Edit([FromBody] EditVehicleType command) =>
