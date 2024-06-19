@@ -33,7 +33,7 @@ var allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Get<stri
 
 if (allowedOrigins is not null)
     builder.Services.AddCors(options => options
-        .AddPolicy("PhoenixSSO",
+        .AddPolicy("UserManagement",
             builder => builder
                 .AllowAnyHeader()
                 .AllowAnyMethod()
@@ -50,28 +50,16 @@ builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer("Bearer", options =>
     {
         options.Authority = authorities["0"];
-        // options.RequireHttpsMetadata = false;
-        // options.Audience = "UserManagementApi";
-        // options.TokenValidationParameters.ValidIssuers = new[] { authorities["0"], authorities["1"] };
-        // options.SecurityTokenValidators.Clear();
-        // options.SecurityTokenValidators.Add(new JwtSecurityTokenHandler
-        // {
-        //     MapInboundClaims = false
-        // });
-        //
-        // options.SaveToken = true;
+        options.RequireHttpsMetadata = false;
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateAudience = false,
-            // NameClaimType = "id",
-            // RoleClaimType = ClaimTypes.Role,
         };
-        options.RequireHttpsMetadata = false;
     });
 
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("PhoenixSSOScope", policy =>
+    options.AddPolicy("UserManagementApi", policy =>
     {
         policy.RequireAuthenticatedUser();
         policy.RequireClaim("scope", "UserManagementApi");
@@ -103,7 +91,7 @@ app.UseHttpsRedirection();
 
 app.UseRouting();
 
-app.UseCors("PhoenixSSO");
+app.UseCors("UserManagement");
 
 app.UseAuthentication();
 app.UseAuthorization();
@@ -111,7 +99,7 @@ app.UseAuthorization();
 app.ConfigureExceptionHandler();
 app.UseAntiXssMiddleware();
 
-app.MapControllers().RequireAuthorization("PhoenixSSOScope");
+app.MapControllers().RequireAuthorization("UserManagementApi");
 app.MapRazorPages();
 app.MapDefaultControllerRoute();
 

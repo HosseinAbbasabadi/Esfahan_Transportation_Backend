@@ -81,7 +81,6 @@ ServiceLocator.SetCurrent(new AutofacServiceLocator(autofacContainer));
 
 app.UseResponseCompression();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

@@ -16,7 +16,7 @@ public class IdentityServiceConfiguration
     {
         return new List<ApiScope>
         {
-            new(TransportationApi, "سیستم حمل و نقل"),
+            new(TransportationApi, "سامانه حمل و نقل"),
             new(UserManagementApi, "مدیریت کاربران")
         };
     }
@@ -27,18 +27,14 @@ public class IdentityServiceConfiguration
         {
             new()
             {
-                ClientId = "PhoenixClientCode",
-                ClientName = "سامانه کالیبراسیون",
-                ClientSecrets = { new Secret("4568_!*&^^%".Sha256()) },
+                ClientId = "TransportationClient",
+                ClientName = "سامانه حمل و نقل",
+                ClientSecrets = { new Secret("FJOIEf9wnfnv#*(*2489".Sha256()) },
                 AllowedGrantTypes = GrantTypes.Code,
 
                 RedirectUris = { "http://localhost:4200/#/challange" },
                 FrontChannelLogoutUri = "https://localhost:5001/signout-oidc",
                 PostLogoutRedirectUris = { "http://localhost:4200" },
-
-                //RedirectUris = { "http://172.30.12.172:8880/#/challange" },
-                //FrontChannelLogoutUri = "http://172.30.12.172:8881/signout-oidc",
-                //PostLogoutRedirectUris = { "http://172.30.12.172:8880" },
 
                 IdentityTokenLifetime = tokenExpiryTime,
                 AuthorizationCodeLifetime = tokenExpiryTime,
@@ -46,6 +42,8 @@ public class IdentityServiceConfiguration
                 AllowedCorsOrigins = allowedOrigins,
                 AllowOfflineAccess = true,
                 ClientClaimsPrefix = "",
+                AlwaysIncludeUserClaimsInIdToken = true,
+                AlwaysSendClientClaims = true,
                 AllowedScopes =
                 {
                     "openid",
@@ -53,32 +51,32 @@ public class IdentityServiceConfiguration
                     TransportationApi,
                     UserManagementApi
                 },
-
-
-                AlwaysIncludeUserClaimsInIdToken = true,
-                AlwaysSendClientClaims = true,
             },
             new()
             {
-                ClientId = "PhoenixClientPassword",
-                ClientName = "Phoenix Angular Client",
-                AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials,
-                AllowAccessTokensViaBrowser = true,
+                ClientId = "UserManagementClient",
+                ClientName = "سامانه مدیریت کاربران",
+                ClientSecrets = { new Secret("fjsdFDSJ98(&^&%^(CV".Sha256()) },
+                AllowedGrantTypes = GrantTypes.Code,
+
+                RedirectUris = { "http://localhost:5200/#/challange" },
+                FrontChannelLogoutUri = "https://localhost:5001/signout-oidc",
+                PostLogoutRedirectUris = { "http://localhost:5200" },
+                
                 IdentityTokenLifetime = tokenExpiryTime,
                 AuthorizationCodeLifetime = tokenExpiryTime,
                 AccessTokenLifetime = tokenExpiryTime,
                 AllowedCorsOrigins = allowedOrigins,
+                AllowOfflineAccess = true,
+                ClientClaimsPrefix = "",
+                AlwaysIncludeUserClaimsInIdToken = true,
+                AlwaysSendClientClaims = true,
                 AllowedScopes =
                 {
                     "openid",
                     "profile",
-                    TransportationApi,
                     UserManagementApi
                 },
-                AlwaysIncludeUserClaimsInIdToken = true,
-                AlwaysSendClientClaims = true,
-                AllowOfflineAccess = true,
-                ClientSecrets = new List<Secret> { new("4568_!*&^^%".Sha256()) }
             }
         };
     }
