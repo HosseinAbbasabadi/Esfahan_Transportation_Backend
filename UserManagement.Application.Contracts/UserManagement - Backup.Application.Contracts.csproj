@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UserManagement.Query.Contracts\UserManagement.Query.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PhoenixFramework.Application" Version="1.2.5" />
+    <PackageReference Include="PhoenixFramework.Company" Version="1.1.1" />
+    <PackageReference Include="PhoenixFramework.Domain" Version="1.2.2" />
+  </ItemGroup>
+
+</Project>

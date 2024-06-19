@@ -1,0 +1,40 @@
+﻿@using IdentityServer4.Extensions
+
+@{
+    string name = null;
+    if (!true.Equals(ViewData["signed-out"]))
+    {
+        name = Context.User?.GetDisplayName();
+    }
+}
+
+@if (!string.IsNullOrWhiteSpace(name))
+{
+    <div class="nav-page">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+            <a href="~/" class="navbar-brand">
+                درگاه مرکزی ورود به سامانه های اطلاعاتی
+            </a>
+
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown mx-1">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                        @name
+                    </a>
+                </li>
+                <li class="nav-item dropdown mx-1">
+                    <a asp-controller="Grants" asp-action="Index" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                        سامانه های در دسترس
+                    </a>
+                </li>
+                <li class="nav-item dropdown mx-1">
+                    <a class="nav-link dropdown-toggle" asp-action="ChangePassword" asp-controller="Account">تغییر کلمه رمز</a>
+                </li>
+                <li class="nav-item dropdown mx-1">
+                    <a class="nav-link dropdown-toggle" asp-action="Logout" asp-controller="Account">خروج</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+}

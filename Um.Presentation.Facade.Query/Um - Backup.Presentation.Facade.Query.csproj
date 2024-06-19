@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Um.Presentation.Facade.Contract\Um.Presentation.Facade.Contract.csproj" />
+      <ProjectReference Include="..\UserManagement.Application.Contracts\UserManagement.Application.Contracts.csproj" />
+      <ProjectReference Include="..\UserManagement.Query.Contracts\UserManagement.Query.Contracts.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="PhoenixFramework.Application" Version="1.2.5" />
+      <PackageReference Include="PhoenixFramework.Company" Version="1.1.1" />
+    </ItemGroup>
+
+</Project>

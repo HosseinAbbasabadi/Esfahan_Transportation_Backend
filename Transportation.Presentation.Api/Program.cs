@@ -10,18 +10,14 @@ using Transportation.Presentation.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
-
 builder.Services.AddRazorPages();
-
 builder.Services.AddLogging();
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.Configure<GzipCompressionProviderOptions>
     (options => options.Level = CompressionLevel.Fastest);
 
@@ -31,9 +27,7 @@ builder.Services.AddResponseCompression(options =>
     options.Providers.Add<GzipCompressionProvider>();
 });
 
-builder.Services.AddHttpContextAccessor();
-
-var allowedOrigins = builder.Configuration.GetSection("AllowedHosts").Get<string[]>();
+var allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Get<string[]>();
 
 if (allowedOrigins is not null)
     builder.Services.AddCors(options => options
@@ -107,5 +101,6 @@ app.UseAntiXssMiddleware();
 app.MapControllers()
     //.RequireAuthorization("PhoenixCoreScope")
     ;
+app.MapRazorPages();
 
 app.Run();

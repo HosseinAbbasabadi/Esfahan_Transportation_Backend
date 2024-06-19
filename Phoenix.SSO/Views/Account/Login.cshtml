@@ -1,0 +1,99 @@
+@model Phoenix.SSO.Quickstart.Account.LoginViewModel
+
+<div class="auth-fluid">
+
+    <div class="auth-fluid-form-box">
+        <div class="align-items-center d-flex h-100">
+            <div class="card-body">
+
+                <div class="auth-brand text-center text-lg-start">
+                    <div class="auth-logo">
+                        <a href="index.html" class="logo logo-dark text-center">
+                            <span class="logo-lg">
+                                @* <img src="" alt="" style="width: 150px; height: 150px;"> *@
+                            </span>
+                        </a>
+
+                        <a href="index.html" class="logo logo-light text-center">
+                            <span class="logo-lg">
+                                @* <img src="" alt="" height="22"> *@
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+                <h4 class="mt-0">درگاه مرکزی ورود به سامانه ها</h4>
+                <p class="text-muted mb-4">لطفا برای ورود به سامانه ها، اطلاعات کاربری خود را وارد نمایید</p>
+
+                <partial name="_ValidationSummary"/>
+
+                <form asp-route="Login">
+                    <input type="hidden" asp-for="ReturnUrl" value="@Model.ReturnUrl"/>
+                    <input type="hidden" asp-for="GeneratedCaptcha" value="@Model.GeneratedCaptcha"/>
+
+                    <div class="mb-2">
+                        <label asp-for="Username" class="form-label">نام کاربری</label>
+                        <input class="form-control" asp-for="Username" id="username" autocomplete="off">
+                    </div>
+
+                    <div class="mb-2">
+                        <label asp-for="Password" class="form-label">رمز عبور</label>
+                        <div class="input-group input-group-merge">
+                            <input asp-for="Password" type="password" id="password" class="form-control" autocomplete="off">
+                        </div>
+                    </div>
+
+                    @if (Model.HasCaptcha)
+                    {
+                        <div class="align-items-center justify-content-between d-flex">
+                            <div
+                                class="align-items-center justify-content-around d-flex mb-2 bg-captcha">
+                                <p class="captcha" id="captcha">
+                                    @Model.GeneratedCaptcha
+                                </p>
+                            </div>
+                            <button id="captchaRefreshBtn" class="btn" type="button">
+                                <i class="fas fa-redo-alt fa-2x"></i>
+                            </button>
+                        </div>
+                    }
+
+                    <div class="mb-2">
+                        <div class="input-group input-group-merge">
+                            <input type="text" asp-for="EnteredCaptcha" id="captcha" class="form-control" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="d-grid text-center">
+                        <span class="indicator-progress d-none" id="waitingText">
+                            لطفا منتظر بمانید...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                        @* 
+                        <button class="align-items-center btn btn-primary d-flex justify-content-center" name="button"
+                                id="loginButton" value="login" onclick="showWaiting()"> *@
+
+                        <button class="align-items-center btn btn-primary d-flex justify-content-center" name="button"
+                                id="loginButton" value="login">
+                            <i class="fa-2x fas fa-fingerprint mx-1"></i>
+                            <span> ورود به سیستم </span>
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    @{
+        var random = new Random();
+        var wallpaper = "/assets/wallpapers/" + random.Next(6, 7) + ".jpg";
+    }
+
+    <div class="auth-fluid-right">
+        <div class="auth-user-testimonial">
+        </div>
+    </div>
+
+</div>

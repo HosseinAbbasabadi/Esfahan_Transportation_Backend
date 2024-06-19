@@ -1,0 +1,53 @@
+﻿@model Phoenix.SSO.Quickstart.Grants.GrantsViewModel
+
+<div class="content p-2">
+    <div class="container-fluid my-2">
+        @* <h2 class="text-center pb-4 text-primary">سامانه های در دسترس شما</h2> *@
+        <div class="row">
+            @if (Model.Grants.Any() == false)
+            {
+                <div class="col-sm-8">
+                    <div class="alert alert-info">
+                        شما به هیچ سامانه ای دسترسی ندارید. لطفا با راهبر سیستم تماس بگیرید.
+                    </div>
+                </div>
+            }
+            else
+            {
+                foreach (var grant in Model.Grants)
+                {
+                    <div class="col-3">
+                        <div class="card shadow">
+                            <div class="card-header text-center bg-white">
+                                <img class="card-img-top img-fluid w-75" src="~/assets/images/@grant.ClientLogoUrl" alt="Card image cap">
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title mb-3 text-center">@grant.ClientName</h3>
+                                
+                                @* @if (!string.IsNullOrWhiteSpace(grant.Description)) *@
+                                @* { *@
+                                @*     <p class="card-text">@grant.Description</p> *@
+                                @* } *@
+                                
+                                @if (string.IsNullOrWhiteSpace(grant.ClientUrl))
+                                {
+                                    <a href="@grant.ClientUrl" class="btn btn-soft-dark d-flex align-items-center justify-content-center disabled">
+                                        به زودی
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="@grant.ClientUrl" class="btn btn-soft-success d-flex align-items-center justify-content-center">
+                                        <i class="fas fa-long-arrow-alt-left mx-1"></i>
+                                        ورود به سامانه @grant.ClientName
+                                        <i class="fas fa-long-arrow-alt-right mx-1"></i>
+                                    </a>    
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+@font-face {
+    font-family: IRANSans_Bold;
+    font-style: normal;
+    src: url('../../fonts/iransans/IRANSansWeb(FaNum)_Bold.eot');
+    src: url('../../fonts/iransans/IRANSansWeb(FaNum)_Bold.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/iransans/IRANSansWeb(FaNum)_Bold.woff2') format('woff2'),
+    url('../../fonts/iransans/IRANSansWeb(FaNum)_Bold.woff') format('woff'),
+    url('../../fonts/iransans/IRANSansWeb(FaNum)_Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: IRANSans_FaNum;
+    font-style: normal;
+    src: url('../../fonts/iransans/IRANSansWeb(FaNum).eot');
+    src: url('../../fonts/iransans/IRANSansWeb(FaNum).eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/iransans/IRANSansWeb(FaNum).woff2') format('woff2'),
+    url('../../fonts/iransans/IRANSansWeb(FaNum).woff') format('woff'),
+    url('../../fonts/iransans/IRANSansWeb(FaNum).ttf') format('truetype');
+}
+
+* {
+    font-family: IRANSans_Bold !important;
+}
+
+.bg-captcha{
+    color: white; 
+    height: 90px; 
+    font-size: 40px;
+    background-image: url(../../images/captcha.jpg);
+    letter-spacing: 10px;
+    width: 90%;
+}
+
+.captcha{
+    font-family: cursive !important;
+}
+
+.auth-fluid-right{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(../../wallpapers/8.jpg);
+}
+
+.auth-fluid .auth-fluid-form-box{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.h-300{
+    height: 300px !important;
+}

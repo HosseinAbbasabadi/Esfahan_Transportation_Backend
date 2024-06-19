@@ -20,4 +20,6 @@
       <ProjectReference Include="..\Transportation.Presentation.Facade.Query\Transportation.Presentation.Facade.Query.csproj" />
     </ItemGroup>
 
+
+
 </Project>

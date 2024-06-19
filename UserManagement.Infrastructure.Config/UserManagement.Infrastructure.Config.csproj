@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="7.1.0" />
+    <PackageReference Include="Autofac.Extras.DynamicProxy" Version="7.1.0" />
+    <PackageReference Include="PhoenixFramework.Autofac" Version="1.2.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Um.Presentation.Facade.Command\Um.Presentation.Facade.Command.csproj" />
+    <ProjectReference Include="..\Um.Presentation.Facade.Query\Um.Presentation.Facade.Query.csproj" />
+    <ProjectReference Include="..\UserManagement.Acl\UserManagement.Acl.csproj" />
+    <ProjectReference Include="..\UserManagement.Application\UserManagement.Application.csproj" />
+    <ProjectReference Include="..\UserManagement.Persistence\UserManagement.Persistence.csproj" />
+    <ProjectReference Include="..\UserManagement.Query\UserManagement.Query.csproj" />
+  </ItemGroup>
+
+</Project>

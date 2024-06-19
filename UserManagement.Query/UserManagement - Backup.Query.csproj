@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PhoenixFramework.Dapper" Version="1.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UserManagement.Domain\UserManagement.Domain.csproj" />
+    <ProjectReference Include="..\UserManagement.Persistence\UserManagement.Persistence.csproj" />
+    <ProjectReference Include="..\UserManagement.Query.Contracts\UserManagement.Query.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>
