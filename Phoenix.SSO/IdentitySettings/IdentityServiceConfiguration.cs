@@ -9,14 +9,14 @@ namespace Phoenix.SSO.IdentitySettings;
 
 public class IdentityServiceConfiguration
 {
-    private const string PhoenixCoreApi = "PhoenixCoreApi";
+    private const string TransportationApi = "TransportationApi";
     private const string UserManagementApi = "UserManagementApi";
 
     public static IEnumerable<ApiScope> ApiScopes()
     {
         return new List<ApiScope>
         {
-            new(PhoenixCoreApi, "سیستم اصلی"),
+            new(TransportationApi, "سیستم حمل و نقل"),
             new(UserManagementApi, "مدیریت کاربران")
         };
     }
@@ -40,10 +40,6 @@ public class IdentityServiceConfiguration
                 //FrontChannelLogoutUri = "http://172.30.12.172:8881/signout-oidc",
                 //PostLogoutRedirectUris = { "http://172.30.12.172:8880" },
 
-                //RedirectUris = { "http://192.168.50.58:8880/#/challange" },
-                //FrontChannelLogoutUri = "http://192.168.50.58:8881/signout-oidc",
-                //PostLogoutRedirectUris = { "http://192.168.50.58:8880" },
-
                 IdentityTokenLifetime = tokenExpiryTime,
                 AuthorizationCodeLifetime = tokenExpiryTime,
                 AccessTokenLifetime = tokenExpiryTime,
@@ -54,7 +50,7 @@ public class IdentityServiceConfiguration
                 {
                     "openid",
                     "profile",
-                    PhoenixCoreApi,
+                    TransportationApi,
                     UserManagementApi
                 },
 
@@ -76,7 +72,7 @@ public class IdentityServiceConfiguration
                 {
                     "openid",
                     "profile",
-                    PhoenixCoreApi,
+                    TransportationApi,
                     UserManagementApi
                 },
                 AlwaysIncludeUserClaimsInIdToken = true,

@@ -3,6 +3,7 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.IdentityModel.Logging;
+using Microsoft.IdentityModel.Tokens;
 using PhoenixFramework.Autofac;
 using PhoenixFramework.Core;
 using Transportation.Infrastructure.Config;
@@ -40,26 +41,26 @@ if (allowedOrigins is not null)
                 .WithOrigins(allowedOrigins)
         ));
 
-// var authorities = builder.Configuration.GetSection("IdentityAuthorities");
-// builder.Services.AddAuthentication("Bearer")
-// .AddJwtBearer("Bearer", options =>
-// {
-//     options.Authority = authorities["0"];
-//     options.TokenValidationParameters = new TokenValidationParameters
-//     {
-//         ValidateAudience = false
-//     };
-//     options.RequireHttpsMetadata = false;
-// });
+var authorities = builder.Configuration.GetSection("IdentityAuthorities");
+builder.Services.AddAuthentication("Bearer")
+.AddJwtBearer("Bearer", options =>
+{
+    options.Authority = authorities["0"];
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateAudience = false
+    };
+    options.RequireHttpsMetadata = false;
+});
 
-// builder.Services.AddAuthorization(options =>
-// {
-//     options.AddPolicy("PhoenixCoreScope", policy =>
-//     {
-//         policy.RequireAuthenticatedUser();
-//         policy.RequireClaim("scope", "PhoenixCoreApi");
-//     });
-// });
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("Transportation", policy =>
+    {
+        policy.RequireAuthenticatedUser();
+        policy.RequireClaim("scope", "TransportationApi");
+    });
+});
 
 var connectionString = builder.Configuration.GetConnectionString("Application");
 var ssoConnectionString = builder.Configuration.GetConnectionString("SSO");
@@ -98,9 +99,8 @@ app.UseAuthorization();
 app.ConfigureExceptionHandler();
 app.UseAntiXssMiddleware();
 
-app.MapControllers()
-    //.RequireAuthorization("PhoenixCoreScope")
-    ;
+app.MapControllers().RequireAuthorization("Transportation");
+
 app.MapRazorPages();
 
 app.Run();
