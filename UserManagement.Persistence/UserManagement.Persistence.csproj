@@ -23,6 +23,7 @@
     </PackageReference>
     <PackageReference Include="PhoenixFramework.Dapper" Version="1.0.9" />
     <PackageReference Include="PhoenixFramework.EntityFramework" Version="1.1.8" />
+    <PackageReference Include="PhoenixFramework.Logging" Version="1.2.1" />
   </ItemGroup>
 
   <ItemGroup>
