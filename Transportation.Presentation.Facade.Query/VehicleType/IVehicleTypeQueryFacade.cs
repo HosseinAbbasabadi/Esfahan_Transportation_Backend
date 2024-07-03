@@ -9,9 +9,9 @@ public interface IVehicleTypeQueryFacade : IFacadeService
     // [HasPermission("VehicleType_List")]
     List<VehicleTypeViewModel> List(VehicleTypeSearchModel searchModel);
 
-    [HasPermission("VehicleType_List")]
+    // [HasPermission("VehicleType_List")]
     List<VehicleTypeComboModel> Combo();
 
-    [HasPermission("VehicleType_Edit")]
+    // [HasPermission("VehicleType_Edit")]
     VehicleTypeViewModel Detail(Guid guid);
 }

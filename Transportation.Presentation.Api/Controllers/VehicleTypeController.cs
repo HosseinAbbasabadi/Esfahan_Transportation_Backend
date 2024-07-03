@@ -21,7 +21,7 @@ public class VehicleTypeController : ControllerBase
     }
 
     [HttpPost("Create")]
-    public async Task<IActionResult> Create([FromBody] CreateVehicleType command)
+    public async Task<IActionResult> Create([FromForm] CreateVehicleType command)
     {
         return new JsonResult(await _commandFacade.Create(command));
         // return new JsonResult(await _responsiveCommandBusAsync.Dispatch<CreateVehicleType, Guid>(command));

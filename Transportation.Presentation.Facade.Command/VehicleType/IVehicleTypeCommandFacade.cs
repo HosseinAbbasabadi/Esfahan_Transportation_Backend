@@ -6,15 +6,15 @@ namespace Transportation.Presentation.Facade.Command.VehicleType;
 
 public interface IVehicleTypeCommandFacade : IFacadeService
 {
-    [HasPermission("VehicleType_Create")]
+    // [HasPermission("VehicleType_Create")]
     Task<Guid> Create(CreateVehicleType command);
 
-    [HasPermission("VehicleType_Edit")]
+    // [HasPermission("VehicleType_Edit")]
     Task Edit(EditVehicleType command);
 
-    [HasPermission("VehicleType_Remove")]
+    // [HasPermission("VehicleType_Remove")]
     Task Remove(Guid guid);
 
-    [HasPermission("VehicleType_Restore")]
+    // [HasPermission("VehicleType_Restore")]
     Task Restore(Guid guid);
 }

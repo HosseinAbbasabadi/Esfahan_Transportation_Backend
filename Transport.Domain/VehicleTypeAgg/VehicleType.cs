@@ -8,6 +8,10 @@ public class VehicleType : AuditableAggregateRootBase<long>
     public string Title { get; private set; }
     public string? Description { get; private set; }
 
+    protected VehicleType()
+    {
+    }
+
     public VehicleType(Guid creator, string title, string? description, IVehicleTypeService vehicleTypeService) :
         base(creator)
     {

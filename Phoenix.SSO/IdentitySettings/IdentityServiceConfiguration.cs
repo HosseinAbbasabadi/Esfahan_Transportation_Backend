@@ -33,7 +33,7 @@ public class IdentityServiceConfiguration
                 AllowedGrantTypes = GrantTypes.Code,
 
                 RedirectUris = { "http://localhost:4200/#/challange" },
-                FrontChannelLogoutUri = "https://localhost:5001/signout-oidc",
+                // FrontChannelLogoutUri = "https://localhost:5001/signout-oidc",
                 PostLogoutRedirectUris = { "http://localhost:4200" },
 
                 IdentityTokenLifetime = tokenExpiryTime,
@@ -49,32 +49,6 @@ public class IdentityServiceConfiguration
                     "openid",
                     "profile",
                     TransportationApi,
-                    UserManagementApi
-                },
-            },
-            new()
-            {
-                ClientId = "UserManagementClient",
-                ClientName = "سامانه مدیریت کاربران",
-                ClientSecrets = { new Secret("fjsdFDSJ98(&^&%^(CV".Sha256()) },
-                AllowedGrantTypes = GrantTypes.Code,
-
-                RedirectUris = { "http://localhost:5200/#/challange" },
-                FrontChannelLogoutUri = "https://localhost:5001/signout-oidc",
-                PostLogoutRedirectUris = { "http://localhost:5200" },
-                
-                IdentityTokenLifetime = tokenExpiryTime,
-                AuthorizationCodeLifetime = tokenExpiryTime,
-                AccessTokenLifetime = tokenExpiryTime,
-                AllowedCorsOrigins = allowedOrigins,
-                AllowOfflineAccess = true,
-                ClientClaimsPrefix = "",
-                AlwaysIncludeUserClaimsInIdToken = true,
-                AlwaysSendClientClaims = true,
-                AllowedScopes =
-                {
-                    "openid",
-                    "profile",
                     UserManagementApi
                 },
             }

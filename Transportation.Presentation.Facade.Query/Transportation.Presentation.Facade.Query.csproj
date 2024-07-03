@@ -7,12 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="PhoenixFramework.Application" Version="1.2.5" />
-      <PackageReference Include="PhoenixFramework.Core" Version="1.1.2" />
-    </ItemGroup>
-
-
-    <ItemGroup>
       <ProjectReference Include="..\Transportation.Infrastructure.Query\Transportation.Infrastructure.Query.csproj" />
     </ItemGroup>
 
