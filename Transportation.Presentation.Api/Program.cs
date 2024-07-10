@@ -4,6 +4,7 @@ using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using PhoenixFramework.Autofac;
 using PhoenixFramework.Core;
 using Transportation.Infrastructure.Config;
@@ -12,7 +13,7 @@ using Transportation.Presentation.Api;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddNewtonsoftJson();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddRazorPages();
@@ -43,15 +44,15 @@ if (allowedOrigins is not null)
 
 var authorities = builder.Configuration.GetSection("IdentityAuthorities");
 builder.Services.AddAuthentication("Bearer")
-.AddJwtBearer("Bearer", options =>
-{
-    options.Authority = authorities["0"];
-    options.TokenValidationParameters = new TokenValidationParameters
+    .AddJwtBearer("Bearer", options =>
     {
-        ValidateAudience = false
-    };
-    options.RequireHttpsMetadata = false;
-});
+        options.Authority = authorities["0"];
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateAudience = false
+        };
+        options.RequireHttpsMetadata = false;
+    });
 
 builder.Services.AddAuthorization(options =>
 {
@@ -96,7 +97,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.ConfigureExceptionHandler();
-app.UseAntiXssMiddleware();
+// app.UseAntiXssMiddleware();
 
 app.MapControllers().RequireAuthorization("Transportation");
 

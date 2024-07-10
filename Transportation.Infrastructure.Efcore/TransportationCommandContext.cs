@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PhoenixFramework.Logging;
+using Transport.Domain.InvoiceAgg;
 using Transport.Domain.VehicleTypeAgg;
 using Transportation.Infrastructure.Efcore.Mapping;
 
@@ -9,7 +10,8 @@ public class TransportationCommandContext : DbContext
 {
     public DbSet<VehicleType> VehicleTypes { get; set; }
     public DbSet<OperationLog> OperationLogs { get; set; }
-    
+    public DbSet<Invoice> Invoices { get; set; }
+
     public TransportationCommandContext(DbContextOptions<TransportationCommandContext> options) : base(options)
     {
     }
@@ -18,7 +20,7 @@ public class TransportationCommandContext : DbContext
     {
         var assembly = typeof(VehicleTypeMapping).Assembly;
         modelBuilder.ApplyConfigurationsFromAssembly(assembly);
-        
+
         base.OnModelCreating(modelBuilder);
     }
 }

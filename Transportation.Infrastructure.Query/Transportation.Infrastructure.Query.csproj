@@ -14,6 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Transportation.Application\Transportation.Application.csproj" />
       <ProjectReference Include="..\Transportation.Infrastructure.Efcore\Transportation.Infrastructure.Efcore.csproj" />
     </ItemGroup>
 

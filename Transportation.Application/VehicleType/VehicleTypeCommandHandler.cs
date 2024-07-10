@@ -53,7 +53,7 @@ public class VehicleTypeCommandHandler :
     {
         var editor = _claimHelper.GetCurrentUserGuid();
         var vehicleType = await _vehicleTypeRepository.LoadAsync(command.Guid);
-
+        
         vehicleType.Remove(editor);
     }
 
