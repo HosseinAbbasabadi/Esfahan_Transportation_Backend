@@ -28,7 +28,7 @@ public class Invoice : AuditableAggregateRootBase<long>
     public void SetDetails(List<InvoiceDetail> details)
     {
         Details = details;
-
+        
         CalculateSummary();
     }
 

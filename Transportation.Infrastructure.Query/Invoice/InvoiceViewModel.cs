@@ -2,6 +2,7 @@ namespace Transportation.Infrastructure.Query.Invoice;
 
 public class InvoiceViewModel
 {
+    public Guid Guid { get; set; }
     public long No { get; set; }
     public string Date { get; set; }
     public long CustomerId { get; set; }

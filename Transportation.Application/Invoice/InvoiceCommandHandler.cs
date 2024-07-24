@@ -42,10 +42,32 @@ public class InvoiceCommandHandler :
         var currentUserGuid = _claimHelper.GetCurrentUserGuid();
         var invoice = await _invoiceRepository.LoadAsync(command.Guid, "Details");
 
-        var details = command.Details.Select(x => new InvoiceDetail(currentUserGuid, x.ProductId, x.Count,
-            x.UnitPrice, x.Price, x.Discount, x.FinalPrice, x.Description)).ToList();
-
-        invoice.SetDetails(details);
+        foreach (var incomingDetail in command.Details)
+        {
+            if (incomingDetail.IsDeleted)
+            {
+                var detail = invoice.Details.First(x => x.Id == incomingDetail.Id);
+                invoice.Details.Remove(detail);
+            }
+            else
+            {
+                if (incomingDetail.Id > 0)
+                {
+                    var detail = invoice.Details.First(x => x.Id == incomingDetail.Id);
+                    detail.Edit(incomingDetail.ProductId, incomingDetail.Count, incomingDetail.UnitPrice,
+                        incomingDetail.Price, incomingDetail.Discount, incomingDetail.FinalPrice,
+                        incomingDetail.Description);
+                }
+                else
+                {
+                    var detail = new InvoiceDetail(currentUserGuid, incomingDetail.ProductId, incomingDetail.Count,
+                        incomingDetail.UnitPrice,
+                        incomingDetail.Price, incomingDetail.Discount, incomingDetail.FinalPrice,
+                        incomingDetail.Description);
+                    invoice.Details.Add(detail);
+                }
+            }
+        }
     }
 
     public async Task Handle(DeleteInvoice command)

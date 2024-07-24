@@ -29,6 +29,8 @@ public class InvoiceQueryHandler :
                 Description = x.Description,
                 Details = x.Details.Select(x => new InvoiceDetailOps
                 {
+                    Id = x.Id,
+                    Guid = x.Guid,
                     ProductId = x.ProductId,
                     Count = x.Count,
                     UnitPrice = x.UnitPrice,
@@ -64,6 +66,7 @@ public class InvoiceQueryHandler :
 
         return query.Select(x => new InvoiceViewModel
             {
+                Guid = x.Guid,
                 No = x.No,
                 Date = x.Date.ToFarsi(),
                 CustomerId = x.CustomerId,

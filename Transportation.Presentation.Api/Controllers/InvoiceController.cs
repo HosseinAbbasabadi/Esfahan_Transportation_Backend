@@ -22,7 +22,7 @@ public class InvoiceController : ControllerBase
     }
 
     [HttpPost("Create")]
-    public async Task<IActionResult> Create([FromForm] CreateInvoice command) =>
+    public async Task<IActionResult> Create([FromBody] CreateInvoice command) =>
         new JsonResult(await _commandFacade.Create(command));
 
     [HttpPost("Edit")]

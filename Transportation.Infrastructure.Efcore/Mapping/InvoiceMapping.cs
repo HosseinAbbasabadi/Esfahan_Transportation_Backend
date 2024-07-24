@@ -13,8 +13,8 @@ public class InvoiceMapping : IEntityTypeConfiguration<Invoice>
 
         builder.Ignore(x => x.IsActive);
         builder.Ignore(x => x.IsLocked);
-        
-        builder.HasMany<InvoiceDetail>()
+
+        builder.HasMany(x => x.Details)
             .WithOne(x => x.Invoice)
             .HasForeignKey(x => x.InvoiceId);
     }

@@ -22,7 +22,19 @@ public class InvoiceDetail : EntityBase<long>
     public InvoiceDetail(Guid creator, long productId, int count, long unitPrice, long price,
         long discount, long finalPrice, string? description) : base(creator)
     {
-        Guid = new Guid();
+        Guid = Guid.NewGuid();
+        ProductId = productId;
+        Count = count;
+        UnitPrice = unitPrice;
+        Price = price;
+        Discount = discount;
+        FinalPrice = finalPrice;
+        Description = description;
+    }
+    
+    public void Edit(long productId, int count, long unitPrice, long price,
+        long discount, long finalPrice, string? description)
+    {
         ProductId = productId;
         Count = count;
         UnitPrice = unitPrice;

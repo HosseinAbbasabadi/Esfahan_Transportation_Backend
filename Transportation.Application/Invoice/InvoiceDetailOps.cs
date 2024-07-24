@@ -2,7 +2,8 @@ namespace Transportation.Application.Invoice;
 
 public class InvoiceDetailOps
 {
-    // public Guid Guid { get; set; }
+    public long Id { get; set; }
+    public Guid Guid { get; set; }
     public long InvoiceId { get; set; }
     public long ProductId { get; set; }
     public int Count { get; set; }
@@ -11,4 +12,5 @@ public class InvoiceDetailOps
     public long Discount { get; set; }
     public long FinalPrice { get; set; }
     public string? Description { get; set; }
+    public bool IsDeleted { get; set; }
 }

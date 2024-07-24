@@ -13,7 +13,7 @@ public class InvoiceDetailMapping : IEntityTypeConfiguration<InvoiceDetail>
 
         builder.Ignore(x => x.IsActive);
 
-        builder.HasOne<Invoice>()
+        builder.HasOne(x => x.Invoice)
             .WithMany(x => x.Details)
             .HasForeignKey(x => x.InvoiceId);
     }
